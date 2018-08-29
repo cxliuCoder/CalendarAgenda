@@ -7,8 +7,8 @@
 //
 
 protocol CAEventDataControllable {
-    func fetcbEventList() -> [AgendaEvent]
-    func add(event: AgendaEvent)
+    func fetcbEventList() -> [CAEvent]
+    func add(event: CAEvent)
     func remove(index: Int)
 }
 
@@ -21,7 +21,7 @@ class CAEventDataManager: CAEventDataControllable {
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
     
-    var caEvents: [AgendaEvent] = [] {
+    var caEvents: [CAEvent] = [] {
         didSet {
             saveEventData(events: caEvents)
         }
@@ -32,27 +32,27 @@ class CAEventDataManager: CAEventDataControllable {
         caEvents = refreshStoredEventData()
     }
     
-    private func refreshStoredEventData() -> [AgendaEvent] {
+    private func refreshStoredEventData() -> [CAEvent] {
         guard let data = caUserDefaults.value(forKey: Constants.CACalendarEventsKey) as? Data else {
             return []
         }
         
-        let events = try! decoder.decode([AgendaEvent].self, from: data)
+        let events = try! decoder.decode([CAEvent].self, from: data)
         return events
     }
     
-    private func saveEventData(events:[AgendaEvent]) {
+    private func saveEventData(events:[CAEvent]) {
         let data = try! encoder.encode(events)
         caUserDefaults.set(data, forKey: Constants.CACalendarEventsKey)
     }
     
 // MARK: - CAEventDataControllable
     
-    func fetcbEventList() -> [AgendaEvent] {
+    func fetcbEventList() -> [CAEvent] {
         return caEvents
     }
     
-    func add(event:AgendaEvent) {
+    func add(event:CAEvent) {
         caEvents.append(event)
     }
     
@@ -67,7 +67,7 @@ extension CAEventDataManager {
     }
 }
 
-struct AgendaEvent: Codable {
+struct CAEvent: Codable {
     var eventID: String
     var eventTitle: String
     var eventStartTime: Date

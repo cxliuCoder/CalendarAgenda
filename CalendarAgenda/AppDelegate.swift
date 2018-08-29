@@ -15,7 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // add NavBar to rootViewController
+        let rootVC = CARootViewController()
+        let nav = UINavigationController(rootViewController: rootVC)
+        self.window?.rootViewController = nav
+        
         return true
     }
 
