@@ -9,7 +9,7 @@
 import UIKit
 
 class CAAgendaViewModel {
-    var eventList: [AgendaEvent] = []
+    var eventList: [CAEvent] = []
     
 }
 
