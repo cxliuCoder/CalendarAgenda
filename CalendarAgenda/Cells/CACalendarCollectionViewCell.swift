@@ -18,6 +18,7 @@ class CACalendarCollectionViewCell: UICollectionViewCell {
     var didSelected: Bool = false {
         didSet {
             selectedView.isHidden = (didSelected == false)
+            dayLabel.textColor = Constants.selectedDateTextColor
         }
     }
     
@@ -41,7 +42,9 @@ class CACalendarCollectionViewCell: UICollectionViewCell {
         
         dayLabel = UILabel(frame: frame)
         dayLabel.textAlignment = .center;
+        dayLabel.textColor = Constants.calendarTextColor
         dayLabel.backgroundColor = UIColor.clear
+        
         self.contentView.addSubview(dayLabel)
         
         monthLabel = UILabel(frame: frame)
@@ -49,6 +52,7 @@ class CACalendarCollectionViewCell: UICollectionViewCell {
         monthLabel.font = UIFont.boldSystemFont(ofSize: 12)
         monthLabel.textAlignment = .center
         monthLabel.backgroundColor = UIColor.clear
+        monthLabel.textColor = Constants.calendarTextColor
         self.contentView.addSubview(monthLabel)
     }
     
@@ -59,6 +63,7 @@ class CACalendarCollectionViewCell: UICollectionViewCell {
         monthLabel.isHidden = true
         dot.isHidden = true
         dayLabel.text = ""
+        dayLabel.textColor = Constants.calendarTextColor
     }
     
     override func layoutSubviews() {
@@ -80,14 +85,13 @@ class CACalendarCollectionViewCell: UICollectionViewCell {
         f.size.height = dayLabel.frame.origin.y - padding
         monthLabel.frame = f
         
-        let dotRadius: CGFloat = 4
-        f.origin.x = (self.bounds.size.width - dotRadius) / 2
-        f.origin.y = self.bounds.size.height - padding * 2 - dotRadius
-        f.size.width = dotRadius
-        f.size.height = dotRadius
+        f.origin.x = (self.bounds.size.width - Constants.dotRadius) / 2
+        f.origin.y = self.bounds.size.height - padding * 2 - Constants.dotRadius
+        f.size.width = Constants.dotRadius
+        f.size.height = Constants.dotRadius
         dot.frame = f
         dot.layer.masksToBounds = true
-        dot.layer.cornerRadius = dotRadius / 2
+        dot.layer.cornerRadius = Constants.dotRadius / 2
         
         f = dayLabel.frame
         selectedView.frame = f
@@ -98,6 +102,9 @@ class CACalendarCollectionViewCell: UICollectionViewCell {
 
 extension CACalendarCollectionViewCell {
     struct Constants {
+        static let dotRadius: CGFloat = 4
         static let selectedColor = UIColor.hexColor(string: "#008dff")
+        static let selectedDateTextColor = UIColor.white
+        static let calendarTextColor = UIColor.hexColor(string:"0x8a8a8f")
     }
 }
