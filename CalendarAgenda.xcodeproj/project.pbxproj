@@ -26,6 +26,8 @@
 		0ADD3EF62133AD2700D16DC4 /* CACalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EF52133AD2700D16DC4 /* CACalendarCollectionViewCell.swift */; };
 		0ADD3EF9213564C000D16DC4 /* Date+CAFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EF8213564C000D16DC4 /* Date+CAFormats.swift */; };
 		0ADD3EFB2135666300D16DC4 /* UIColor+CAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EFA2135666300D16DC4 /* UIColor+CAColor.swift */; };
+		0ADD3EFD21368F7B00D16DC4 /* CAAgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EFC21368F7B00D16DC4 /* CAAgendaTableViewCell.swift */; };
+		0ADD3EFF213936AA00D16DC4 /* CAAgendaViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EFE213936AA00D16DC4 /* CAAgendaViewHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		0ADD3EF52133AD2700D16DC4 /* CACalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		0ADD3EF8213564C000D16DC4 /* Date+CAFormats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+CAFormats.swift"; sourceTree = "<group>"; };
 		0ADD3EFA2135666300D16DC4 /* UIColor+CAColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CAColor.swift"; sourceTree = "<group>"; };
+		0ADD3EFC21368F7B00D16DC4 /* CAAgendaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaTableViewCell.swift; sourceTree = "<group>"; };
+		0ADD3EFE213936AA00D16DC4 /* CAAgendaViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaViewHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 			children = (
 				0A578AAF21325780007CB5F9 /* CACalendarView.swift */,
 				0A578AB12132579A007CB5F9 /* CAAgendaView.swift */,
+				0ADD3EFE213936AA00D16DC4 /* CAAgendaViewHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				0ADD3EF52133AD2700D16DC4 /* CACalendarCollectionViewCell.swift */,
+				0ADD3EFC21368F7B00D16DC4 /* CAAgendaTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -334,9 +340,11 @@
 				0A578AB22132579A007CB5F9 /* CAAgendaView.swift in Sources */,
 				0A578AB421325977007CB5F9 /* CACalendarPresenter.swift in Sources */,
 				0A578AB621325CA5007CB5F9 /* CAAgendaPresenter.swift in Sources */,
+				0ADD3EFF213936AA00D16DC4 /* CAAgendaViewHeaderView.swift in Sources */,
 				0A6F54A8212D8FBB002A32B1 /* AppDelegate.swift in Sources */,
 				0ADD3EFB2135666300D16DC4 /* UIColor+CAColor.swift in Sources */,
 				0A578AB921325DA6007CB5F9 /* CACalendarViewModel.swift in Sources */,
+				0ADD3EFD21368F7B00D16DC4 /* CAAgendaTableViewCell.swift in Sources */,
 				0A578ABE21326B0F007CB5F9 /* CAAgendaInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

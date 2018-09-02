@@ -73,11 +73,11 @@ struct CAEvent: Codable {
     var eventStartTime: Date
     var eventEndTime: Date
     var stickerColor: String
-    var paticipants: [Contacts]
+    var paticipants: [CAContacts]
     var eventLocation: String
 }
 
-struct Contacts: Codable {
+struct CAContacts: Codable {
     var userID: String
     var userName: String
     var userIcon: String

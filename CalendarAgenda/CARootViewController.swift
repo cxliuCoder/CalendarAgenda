@@ -10,6 +10,7 @@ import UIKit
 
 class CARootViewController: UIViewController {
     var calendarView: CACalendarView!
+    var agendaView: CAAgendaView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,11 @@ class CARootViewController: UIViewController {
         calendarView.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         self.view.addSubview(calendarView)
         
-        
+        f.origin.y = f.maxY + 1
+        f.size.height = self.view.frame.size.height - f.size.height
+        agendaView = CAAgendaView(frame: f)
+        agendaView.autoresizingMask = [.flexibleHeight]
+        self.view.addSubview(agendaView)
     }
     
     override func didReceiveMemoryWarning() {

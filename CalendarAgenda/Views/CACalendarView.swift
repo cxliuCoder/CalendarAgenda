@@ -8,27 +8,30 @@
 
 import UIKit
 
-protocol calendarControlable {
-    func didSelectedDate()
-}
-
-protocol calendarDisplayable {
+protocol CACalendarDisplayable {
+    func didSelected(date: Date)
     func refreshCalendar(viewModel: CACalendarViewModel)
 }
 
-class CACalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var controlDelegate: calendarControlable?
-    var displayDelegate: calendarDisplayable?
+protocol CACalendarControlable {
+    func showSelect(date: Date)
+}
+
+class CACalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CACalendarControlable {
+    
+    var displayDelegate: CACalendarDisplayable?
     var viewModel: CACalendarViewModel = CACalendarViewModel()
     var headerView: UIView!
     var dateCollectionView: UICollectionView!
     var selectedDateIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
         didSet {
-            dateCollectionView.reloadItems(at: [oldValue, selectedDateIndexPath])
-            controlDelegate?.didSelectedDate()
+            if oldValue.row != selectedDateIndexPath.row {
+                dateCollectionView.reloadItems(at: [selectedDateIndexPath, oldValue])
+                displayDelegate?.didSelected(date: date(index: selectedDateIndexPath.row))
+            }
         }
     }
-    let titleReuseIdentifier = "CACalendarTitleIndentifier"
+    
     let dateReuseIdentifier = "CACalendarDateCollectionViewCellIndentifier"
     
     override init(frame: CGRect) {
@@ -62,7 +65,6 @@ class CACalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         dateCollectionView.bounces = false
         self.addSubview(dateCollectionView)
         
-        dateCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: titleReuseIdentifier)
         dateCollectionView.register(CACalendarCollectionViewCell.self, forCellWithReuseIdentifier: dateReuseIdentifier)
         
         // init selected date to today
@@ -100,13 +102,14 @@ class CACalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
             let titleLabel = UILabel(frame: f)
             titleLabel.text = title
             titleLabel.textAlignment = .center;
+            titleLabel.textColor = Constants.calendarTextColor
             f.origin.x += titleWidth
             headerView.addSubview(titleLabel)
         }
         return headerView
     }
     
-    private func index(ofDate:Date) -> Int {
+    private func index(ofDate: Date) -> Int {
         let weekdayOfMinDate = Date.weekDay(fromDate: viewModel.minDate)
         let days = Date.daysBetween(fromDate: viewModel.minDate, toDate: ofDate)
         return days + weekdayOfMinDate - 1
@@ -165,7 +168,9 @@ class CACalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedDateIndexPath = indexPath
+        if index(ofDate: viewModel.minDate) <= indexPath.row {
+            selectedDateIndexPath = indexPath
+        }
     }
     
     // MARK: UICollectionViewDelegateFlowLayout
@@ -177,14 +182,18 @@ class CACalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         return f
     }
     
-    
+    // MARK: CACalendarDisplayable
+    func showSelect(date: Date) {
+        dateCollectionView.scrollToItem(at: IndexPath(row: index(ofDate: date), section: 0), at: .top, animated: true)
+    }
 }
 
 extension CACalendarView {
     struct Constants {
-        static let calendarTitleViewHeight: CGFloat = 40
+        static let calendarTitleViewHeight: CGFloat = 32
         static let calendarDividerColor = UIColor.hexColor(string:"0xd8dbde")
         static let calendarGrayedOutColor = UIColor.hexColor(string:"0xececec")
-        static let calendarEvenMonthColor = UIColor.hexColor(string:"0xeaeaea")
+        static let calendarEvenMonthColor = UIColor.hexColor(string:"0xf5f5f5")
+        static let calendarTextColor = UIColor.hexColor(string:"0x8a8a8f")
     }
 }
