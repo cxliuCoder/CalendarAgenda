@@ -16,9 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // add initial data
+        let CANotFirstTimeUseKey = "CANotFirstTimeUseKey"
+        if UserDefaults.standard.bool(forKey: CANotFirstTimeUseKey) == false {
+            CAEventDataManager.sharedInstance.addDefaultData()
+            UserDefaults.standard.set(true, forKey: CANotFirstTimeUseKey)
+        }
+        
         // add NavBar to rootViewController
-        let rootVC = CARootViewController()
+        let calInteractor = CACalendarInteractor(dataManager: CAEventDataManager.sharedInstance)
+        let ageInteractor = CAAgendaInteractor(dataManager: CAEventDataManager.sharedInstance)
+        let caPresenter = CAPresenter(calInteractor: calInteractor, ageInteractor: ageInteractor)
+        
+        let rootVC = CARootViewController(presenter: caPresenter)
         let nav = UINavigationController(rootViewController: rootVC)
+        nav.navigationBar.backgroundColor = UIColor.hexColor(string:"0xf5f5f5")
         self.window?.rootViewController = nav
         
         return true

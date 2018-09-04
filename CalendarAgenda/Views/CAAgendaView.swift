@@ -10,23 +10,25 @@ import UIKit
 
 protocol CAAgendaDisplayable {
     func topped(date: Date)
-    func refreshAgenda(viewModel: CACalendarViewModel)
+    func didChangedMonth(date: Date)
 }
 
 protocol CAAgendaControlable {
     func top(date: Date)
+    func refreshAgenda(viewModel: CAAgendaViewModel)
 }
 
 class CAAgendaView: UIView, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, CAAgendaControlable {
+    
+    var isUserInitiatedScroll = true
     var displayDelegate: CAAgendaDisplayable?
     var tableView: UITableView!
-    var viewModel: CAAgendaViewModel = CAAgendaViewModel()
-    var selectedDateIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+    var viewModel: CAAgendaViewModel = CAAgendaViewModel() {
         didSet {
-            let selectedDate = Calendar.current.date(byAdding: .day, value: selectedDateIndexPath.section, to: viewModel.minDate)
-            displayDelegate?.topped(date: selectedDate!)
+            tableView.reloadData()
         }
     }
+    var selectedDateIndexPath: IndexPath = IndexPath(row: 0, section: 0)
     let agendarHeaderViewReuseIdentifier = "CAAgendarHeaderViewReuseIdentifier"
     let agendarCellReuseIdentifier = "CAAgendarTableViewCellReuseIdentifier"
     let agendarEmptyCellReuseIdentifier = "CAAgendarTableViewEmptyCellReuseIdentifier"
@@ -44,12 +46,6 @@ class CAAgendaView: UIView, UITableViewDelegate, UITableViewDataSource, UIScroll
         tableView.register(CAAgendaViewHeaderView.self, forHeaderFooterViewReuseIdentifier: agendarHeaderViewReuseIdentifier)
         tableView.register(CAAgendaTableViewCell.self, forCellReuseIdentifier: agendarCellReuseIdentifier)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: agendarEmptyCellReuseIdentifier)
-        
-        // scroll to today
-        tableView.scrollToRow(at: IndexPath(row: 0,
-                                            section: sectionIndex(ofDate: Date())),
-                              at: UITableViewScrollPosition.top,
-                              animated: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -129,25 +125,55 @@ class CAAgendaView: UIView, UITableViewDelegate, UITableViewDataSource, UIScroll
     // MARK: ScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let firstRow = tableView.indexPathsForVisibleRows![0]
-//        let currentDate = Calendar.current.date(byAdding: .day, value: firstRow.section, to: viewModel.minDate)
+        
+        let oldDate = Calendar.current.date(byAdding: .day, value: selectedDateIndexPath.section, to: viewModel.minDate)
+        let curDate = Calendar.current.date(byAdding: .day, value: firstRow.section, to: viewModel.minDate)
+        
         selectedDateIndexPath = firstRow
+        let selectedDate = Calendar.current.date(byAdding: .day, value: selectedDateIndexPath.section, to: viewModel.minDate)
+        if isUserInitiatedScroll {
+            displayDelegate?.topped(date: selectedDate!)
+            if Date.month(fromDate: oldDate!) != Date.month(fromDate: curDate!) {
+                displayDelegate?.didChangedMonth(date: curDate!)
+            }
+        }
     }
-    
     
     // enable paging effect
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let firstRow = tableView.indexPathsForVisibleRows![0]
-        tableView.scrollToRow(at: firstRow, at: .top, animated: true)
-    }
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let firstRow = tableView.indexPathsForVisibleRows![0]
-        tableView.scrollToRow(at: firstRow, at: .top, animated: true)
+        let scrollDidStop = scrollView.isTracking == false && scrollView.isDragging == false  && scrollView.isDecelerating == false
+        if scrollDidStop {
+            let firstRow = tableView.indexPathsForVisibleRows![0]
+            tableView.scrollToRow(at: firstRow, at: .top, animated: true)
+        }
     }
     
-    // MARK: CAAgendaDisplayable
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if decelerate == false {
+            let scrollDidStop = scrollView.isDecelerating == false &&
+            scrollView.isTracking &&
+            scrollView.isDecelerating == false
+            if scrollDidStop {
+                let firstRow = tableView.indexPathsForVisibleRows![0]
+                tableView.scrollToRow(at: firstRow, at: .top, animated: true)
+            }
+        }
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        
+        isUserInitiatedScroll = true
+    }
+    
+    // MARK: CAAgendaControlable
     func top(date: Date) {
-        tableView.scrollToRow(at: IndexPath(row: 0, section: sectionIndex(ofDate: date)), at: .top, animated: true)
+        isUserInitiatedScroll = false
+        selectedDateIndexPath = IndexPath(row: 0, section: sectionIndex(ofDate: date))
+        tableView.scrollToRow(at: selectedDateIndexPath, at: .top, animated: true)
+    }
+    
+    func refreshAgenda(viewModel: CAAgendaViewModel) {
+        self.viewModel = viewModel
     }
 }
 

@@ -10,8 +10,7 @@
 		0A578AAE213184DE007CB5F9 /* CARootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A578AAD213184DE007CB5F9 /* CARootViewController.swift */; };
 		0A578AB021325780007CB5F9 /* CACalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A578AAF21325780007CB5F9 /* CACalendarView.swift */; };
 		0A578AB22132579A007CB5F9 /* CAAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A578AB12132579A007CB5F9 /* CAAgendaView.swift */; };
-		0A578AB421325977007CB5F9 /* CACalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A578AB321325977007CB5F9 /* CACalendarPresenter.swift */; };
-		0A578AB621325CA5007CB5F9 /* CAAgendaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A578AB521325CA5007CB5F9 /* CAAgendaPresenter.swift */; };
+		0A578AB421325977007CB5F9 /* CAPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A578AB321325977007CB5F9 /* CAPresenter.swift */; };
 		0A578AB921325DA6007CB5F9 /* CACalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A578AB821325DA6007CB5F9 /* CACalendarViewModel.swift */; };
 		0A578ABC21326AFF007CB5F9 /* CACalendarInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A578ABB21326AFF007CB5F9 /* CACalendarInteractor.swift */; };
 		0A578ABE21326B0F007CB5F9 /* CAAgendaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A578ABD21326B0F007CB5F9 /* CAAgendaInteractor.swift */; };
@@ -28,6 +27,7 @@
 		0ADD3EFB2135666300D16DC4 /* UIColor+CAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EFA2135666300D16DC4 /* UIColor+CAColor.swift */; };
 		0ADD3EFD21368F7B00D16DC4 /* CAAgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EFC21368F7B00D16DC4 /* CAAgendaTableViewCell.swift */; };
 		0ADD3EFF213936AA00D16DC4 /* CAAgendaViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EFE213936AA00D16DC4 /* CAAgendaViewHeaderView.swift */; };
+		0AFFC7F1213E571600886A23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFFC7F0213E571500886A23 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +51,7 @@
 		0A578AAD213184DE007CB5F9 /* CARootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CARootViewController.swift; sourceTree = "<group>"; };
 		0A578AAF21325780007CB5F9 /* CACalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACalendarView.swift; sourceTree = "<group>"; };
 		0A578AB12132579A007CB5F9 /* CAAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaView.swift; sourceTree = "<group>"; };
-		0A578AB321325977007CB5F9 /* CACalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACalendarPresenter.swift; sourceTree = "<group>"; };
-		0A578AB521325CA5007CB5F9 /* CAAgendaPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaPresenter.swift; sourceTree = "<group>"; };
+		0A578AB321325977007CB5F9 /* CAPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAPresenter.swift; sourceTree = "<group>"; };
 		0A578AB821325DA6007CB5F9 /* CACalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACalendarViewModel.swift; sourceTree = "<group>"; };
 		0A578ABB21326AFF007CB5F9 /* CACalendarInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACalendarInteractor.swift; sourceTree = "<group>"; };
 		0A578ABD21326B0F007CB5F9 /* CAAgendaInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaInteractor.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		0ADD3EFA2135666300D16DC4 /* UIColor+CAColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CAColor.swift"; sourceTree = "<group>"; };
 		0ADD3EFC21368F7B00D16DC4 /* CAAgendaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaTableViewCell.swift; sourceTree = "<group>"; };
 		0ADD3EFE213936AA00D16DC4 /* CAAgendaViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaViewHeaderView.swift; sourceTree = "<group>"; };
+		0AFFC7F0213E571500886A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AFFC7F1213E571600886A23 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +129,7 @@
 				0A6F54BB212D8FBE002A32B1 /* CalendarAgendaTests */,
 				0A6F54C6212D8FBE002A32B1 /* CalendarAgendaUITests */,
 				0A6F54A5212D8FBB002A32B1 /* Products */,
+				0AFFC7EF213E571500886A23 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,11 +150,9 @@
 				0A578AB721325D83007CB5F9 /* ViewModels */,
 				0ADD3EF42133ACF700D16DC4 /* Cells */,
 				0ADD3EF72133EF1500D16DC4 /* Utility */,
-				0A6F54D7212ECB2E002A32B1 /* CAEventDataManager.swift */,
 				0A578ABB21326AFF007CB5F9 /* CACalendarInteractor.swift */,
 				0A578ABD21326B0F007CB5F9 /* CAAgendaInteractor.swift */,
-				0A578AB321325977007CB5F9 /* CACalendarPresenter.swift */,
-				0A578AB521325CA5007CB5F9 /* CAAgendaPresenter.swift */,
+				0A578AB321325977007CB5F9 /* CAPresenter.swift */,
 				0A578AAD213184DE007CB5F9 /* CARootViewController.swift */,
 				0A6F54A7212D8FBB002A32B1 /* AppDelegate.swift */,
 				0A6F54AB212D8FBB002A32B1 /* Main.storyboard */,
@@ -195,8 +195,17 @@
 			children = (
 				0ADD3EF8213564C000D16DC4 /* Date+CAFormats.swift */,
 				0ADD3EFA2135666300D16DC4 /* UIColor+CAColor.swift */,
+				0A6F54D7212ECB2E002A32B1 /* CAEventDataManager.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		0AFFC7EF213E571500886A23 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0AFFC7F0213E571500886A23 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,8 +347,7 @@
 				0A578AB021325780007CB5F9 /* CACalendarView.swift in Sources */,
 				0A578ABC21326AFF007CB5F9 /* CACalendarInteractor.swift in Sources */,
 				0A578AB22132579A007CB5F9 /* CAAgendaView.swift in Sources */,
-				0A578AB421325977007CB5F9 /* CACalendarPresenter.swift in Sources */,
-				0A578AB621325CA5007CB5F9 /* CAAgendaPresenter.swift in Sources */,
+				0A578AB421325977007CB5F9 /* CAPresenter.swift in Sources */,
 				0ADD3EFF213936AA00D16DC4 /* CAAgendaViewHeaderView.swift in Sources */,
 				0A6F54A8212D8FBB002A32B1 /* AppDelegate.swift in Sources */,
 				0ADD3EFB2135666300D16DC4 /* UIColor+CAColor.swift in Sources */,
@@ -519,7 +527,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7WRCNY3CLA;
+				DEVELOPMENT_TEAM = TNVDX9S9F6;
 				INFOPLIST_FILE = CalendarAgenda/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -537,7 +545,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7WRCNY3CLA;
+				DEVELOPMENT_TEAM = TNVDX9S9F6;
 				INFOPLIST_FILE = CalendarAgenda/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

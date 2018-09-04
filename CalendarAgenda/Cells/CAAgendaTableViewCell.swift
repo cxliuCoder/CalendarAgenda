@@ -173,7 +173,7 @@ class CAAgendaTableViewCell: UITableViewCell {
     
     func setStickerColor(colorString: String) {
         if colorString.count != 0 {
-            stickerView.backgroundColor = UIColor.hexColor(string: colorString)
+            stickerView.backgroundColor = UIColor.red
         }
     }
     
