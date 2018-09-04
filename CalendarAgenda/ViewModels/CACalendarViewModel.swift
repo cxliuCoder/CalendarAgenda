@@ -13,8 +13,15 @@ class CACalendarViewModel: NSObject {
     let monthTitle = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     let minDate = Date(timeIntervalSinceNow: (-365 * 24 * 60 * 60)) // a year in the past
     let maxDate = Date(timeIntervalSinceNow: (365 * 24 * 60 * 60)) // a year in the future
-    var eventDates: [Date] = [Date()]
+    var eventDates: [Date] = []
     
+    override init() {
+        eventDates = []
+    }
+    
+    init(eventDates: [Date]) {
+        self.eventDates = eventDates
+    }
     
     func hasEvent(date: Date) -> Bool {
         for aDate in eventDates {

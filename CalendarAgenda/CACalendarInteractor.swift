@@ -9,5 +9,20 @@
 import UIKit
 
 class CACalendarInteractor: NSObject {
-
+    var dataManager: CAEventDataControllable!
+    init(dataManager: CAEventDataControllable) {
+        self.dataManager = dataManager
+    }
+    
+    func refreshData() -> CACalendarViewModel {
+        let storedEventList = dataManager.fetchEventList()
+        var eventDates:[Date] = []
+        for event in storedEventList {
+            let date = event.eventStartTime.yyyyMMMddDate()
+            if eventDates.contains(date) == false {
+                eventDates.append(date)
+            }
+        }
+        return CACalendarViewModel(eventDates: eventDates)
+    }
 }

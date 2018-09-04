@@ -36,7 +36,7 @@ extension Date {
         } else if hours != 0 {
             durationString = "\(hours) Hours"
         } else {
-            durationString = "\(mins) Hours"
+            durationString = "\(mins) Mins"
         }
         
         return durationString
@@ -70,6 +70,18 @@ extension Date {
         }
     }
     
+    static func isSameMonth(date1: Date, date2: Date) -> Bool {
+        let components1 = Calendar.current.dateComponents([.year,.month], from: date1)
+        let components2 = Calendar.current.dateComponents([.year,.month], from: date2)
+        
+        if components1.year == components2.year &&
+            components1.month == components2.month {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     static func yyyyMMddhhmmDate(dateString: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHH:mm"
@@ -86,5 +98,11 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM dd"
         return dateFormatter.string(from: self)
+    }
+    
+    func yyyyMMMddDate() -> Date {
+        let components = Calendar.current.dateComponents([.year,.month,.day], from: self)
+        let date = Calendar.current.date(from: components)
+        return date!
     }
 }

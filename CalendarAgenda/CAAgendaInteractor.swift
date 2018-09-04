@@ -9,5 +9,13 @@
 import UIKit
 
 class CAAgendaInteractor: NSObject {
-
+    var dataManager: CAEventDataControllable!
+    init(dataManager: CAEventDataControllable) {
+        self.dataManager = dataManager
+    }
+    
+    func refreshData() -> CAAgendaViewModel {
+        let storedEventList = dataManager.fetchEventList()
+        return CAAgendaViewModel(eventList: storedEventList)
+    }
 }

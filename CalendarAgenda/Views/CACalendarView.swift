@@ -10,24 +10,35 @@ import UIKit
 
 protocol CACalendarDisplayable {
     func didSelected(date: Date)
-    func refreshCalendar(viewModel: CACalendarViewModel)
+    func didMoveToMonth(date: Date)
 }
 
 protocol CACalendarControlable {
     func showSelect(date: Date)
+    func refreshCalendar(viewModel: CACalendarViewModel)
 }
 
 class CACalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CACalendarControlable {
     
     var displayDelegate: CACalendarDisplayable?
-    var viewModel: CACalendarViewModel = CACalendarViewModel()
+    var viewModel: CACalendarViewModel = CACalendarViewModel() {
+        didSet {
+            dateCollectionView.reloadData()
+        }
+    }
     var headerView: UIView!
     var dateCollectionView: UICollectionView!
     var selectedDateIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
         didSet {
             if oldValue.row != selectedDateIndexPath.row {
                 dateCollectionView.reloadItems(at: [selectedDateIndexPath, oldValue])
-                displayDelegate?.didSelected(date: date(index: selectedDateIndexPath.row))
+                dateCollectionView.scrollToItem(at: selectedDateIndexPath, at: .top, animated: true)
+                
+                let oldDate = date(index: oldValue.row)
+                let curDate = date(index: selectedDateIndexPath.row)
+                if Date.isSameMonth(date1: oldDate, date2: curDate) == false  {
+                    displayDelegate?.didMoveToMonth(date: curDate)
+                }
             }
         }
     }
@@ -67,11 +78,6 @@ class CACalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         
         dateCollectionView.register(CACalendarCollectionViewCell.self, forCellWithReuseIdentifier: dateReuseIdentifier)
         
-        // init selected date to today
-        selectedDateIndexPath = IndexPath(row: index(ofDate: Date()), section: 0)
-        
-        // scroll to today
-        dateCollectionView.scrollToItem(at: selectedDateIndexPath, at: .centeredVertically, animated: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -170,6 +176,7 @@ class CACalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if index(ofDate: viewModel.minDate) <= indexPath.row {
             selectedDateIndexPath = indexPath
+            displayDelegate?.didSelected(date: date(index: selectedDateIndexPath.row))
         }
     }
     
@@ -182,9 +189,14 @@ class CACalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         return f
     }
     
-    // MARK: CACalendarDisplayable
+    // MARK: CACalendarControlable
     func showSelect(date: Date) {
-        dateCollectionView.scrollToItem(at: IndexPath(row: index(ofDate: date), section: 0), at: .top, animated: true)
+        let dateIndexPath = IndexPath(row: index(ofDate: date), section: 0)
+        selectedDateIndexPath = dateIndexPath
+    }
+    
+    func refreshCalendar(viewModel: CACalendarViewModel) {
+        self.viewModel = viewModel
     }
 }
 
