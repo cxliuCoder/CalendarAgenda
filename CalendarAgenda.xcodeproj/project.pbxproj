@@ -28,6 +28,8 @@
 		0ADD3EFD21368F7B00D16DC4 /* CAAgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EFC21368F7B00D16DC4 /* CAAgendaTableViewCell.swift */; };
 		0ADD3EFF213936AA00D16DC4 /* CAAgendaViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EFE213936AA00D16DC4 /* CAAgendaViewHeaderView.swift */; };
 		0AFFC7F1213E571600886A23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFFC7F0213E571500886A23 /* CoreLocation.framework */; };
+		0AFFC7FC213F785200886A23 /* CAFloutingWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFC7FB213F785200886A23 /* CAFloutingWeatherView.swift */; };
+		0AFFC7FE213F7DE400886A23 /* CAWeatherDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFC7FD213F7DE400886A23 /* CAWeatherDataFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		0ADD3EFC21368F7B00D16DC4 /* CAAgendaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaTableViewCell.swift; sourceTree = "<group>"; };
 		0ADD3EFE213936AA00D16DC4 /* CAAgendaViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaViewHeaderView.swift; sourceTree = "<group>"; };
 		0AFFC7F0213E571500886A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0AFFC7FB213F785200886A23 /* CAFloutingWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAFloutingWeatherView.swift; sourceTree = "<group>"; };
+		0AFFC7FD213F7DE400886A23 /* CAWeatherDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAWeatherDataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 				0A578AAF21325780007CB5F9 /* CACalendarView.swift */,
 				0A578AB12132579A007CB5F9 /* CAAgendaView.swift */,
 				0ADD3EFE213936AA00D16DC4 /* CAAgendaViewHeaderView.swift */,
+				0AFFC7FB213F785200886A23 /* CAFloutingWeatherView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				0ADD3EF8213564C000D16DC4 /* Date+CAFormats.swift */,
 				0ADD3EFA2135666300D16DC4 /* UIColor+CAColor.swift */,
 				0A6F54D7212ECB2E002A32B1 /* CAEventDataManager.swift */,
+				0AFFC7FD213F7DE400886A23 /* CAWeatherDataFetcher.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -340,10 +346,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A6F54D6212EC457002A32B1 /* CAAgendaViewModel.swift in Sources */,
+				0AFFC7FC213F785200886A23 /* CAFloutingWeatherView.swift in Sources */,
 				0A6F54D8212ECB2E002A32B1 /* CAEventDataManager.swift in Sources */,
 				0ADD3EF62133AD2700D16DC4 /* CACalendarCollectionViewCell.swift in Sources */,
 				0ADD3EF9213564C000D16DC4 /* Date+CAFormats.swift in Sources */,
 				0A578AAE213184DE007CB5F9 /* CARootViewController.swift in Sources */,
+				0AFFC7FE213F7DE400886A23 /* CAWeatherDataFetcher.swift in Sources */,
 				0A578AB021325780007CB5F9 /* CACalendarView.swift in Sources */,
 				0A578ABC21326AFF007CB5F9 /* CACalendarInteractor.swift in Sources */,
 				0A578AB22132579A007CB5F9 /* CAAgendaView.swift in Sources */,
