@@ -46,16 +46,9 @@ class CARootViewController: UIViewController, CACalendarDisplayable, CAAgendaDis
         
         presenter.reloadData()
         
-        // Floating weather view
-        let margin: CGFloat = 100
-        let weatherManager = CAWeatherDataFetcher.sharedInstance
-        let fwView = CAFloutingWeatherView(weatherManager: weatherManager, weatherDate: Date())
-        f = fwView.frame
-        f.origin.x = self.view.bounds.size.width - margin
-        f.origin.y = self.view.bounds.size.height - margin
-        fwView.frame = f
-        fwView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
-        self.view.addSubview(fwView)
+        // floating weather button
+        
+        
         
         // add event button
         addEventButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addARandomEvent))

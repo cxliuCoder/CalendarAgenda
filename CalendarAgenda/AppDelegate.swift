@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let rootVC = CARootViewController(presenter: caPresenter)
         let nav = UINavigationController(rootViewController: rootVC)
-        nav.navigationBar.isOpaque = true
         nav.navigationBar.backgroundColor = UIColor.hexColor(string:"0xf5f5f5")
         self.window?.rootViewController = nav
         
