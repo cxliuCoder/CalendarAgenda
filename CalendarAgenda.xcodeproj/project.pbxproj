@@ -18,7 +18,6 @@
 		0A6F54AD212D8FBB002A32B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6F54AB212D8FBB002A32B1 /* Main.storyboard */; };
 		0A6F54AF212D8FBE002A32B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6F54AE212D8FBE002A32B1 /* Assets.xcassets */; };
 		0A6F54B2212D8FBE002A32B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6F54B0212D8FBE002A32B1 /* LaunchScreen.storyboard */; };
-		0A6F54BD212D8FBE002A32B1 /* CalendarAgendaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F54BC212D8FBE002A32B1 /* CalendarAgendaTests.swift */; };
 		0A6F54C8212D8FBE002A32B1 /* CalendarAgendaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F54C7212D8FBE002A32B1 /* CalendarAgendaUITests.swift */; };
 		0A6F54D6212EC457002A32B1 /* CAAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F54D5212EC457002A32B1 /* CAAgendaViewModel.swift */; };
 		0A6F54D8212ECB2E002A32B1 /* CAEventDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6F54D7212ECB2E002A32B1 /* CAEventDataManager.swift */; };
@@ -28,8 +27,14 @@
 		0ADD3EFD21368F7B00D16DC4 /* CAAgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EFC21368F7B00D16DC4 /* CAAgendaTableViewCell.swift */; };
 		0ADD3EFF213936AA00D16DC4 /* CAAgendaViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD3EFE213936AA00D16DC4 /* CAAgendaViewHeaderView.swift */; };
 		0AFFC7F1213E571600886A23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFFC7F0213E571500886A23 /* CoreLocation.framework */; };
+		0AFFC7F6213EA2B200886A23 /* CAEventDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFC7F5213EA2B100886A23 /* CAEventDataManagerMock.swift */; };
+		0AFFC7F8213EA4EF00886A23 /* CAAgendaInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFC7F7213EA4EF00886A23 /* CAAgendaInteractorTest.swift */; };
+		0AFFC7FA213EA58800886A23 /* CACalendarInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFC7F9213EA58800886A23 /* CACalendarInteractorTest.swift */; };
 		0AFFC7FC213F785200886A23 /* CAFloatingWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFC7FB213F785200886A23 /* CAFloatingWeatherView.swift */; };
 		0AFFC7FE213F7DE400886A23 /* CAWeatherDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFC7FD213F7DE400886A23 /* CAWeatherDataFetcher.swift */; };
+		0AFFC800213FDE5700886A23 /* CACalendarViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFC7FF213FDE5700886A23 /* CACalendarViewMock.swift */; };
+		0AFFC802213FDF3400886A23 /* CAAgendaViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFC801213FDF3400886A23 /* CAAgendaViewMock.swift */; };
+		0AFFC807213FEF7E00886A23 /* CAPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFFC806213FEF7E00886A23 /* CAPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +69,6 @@
 		0A6F54B1212D8FBE002A32B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A6F54B3212D8FBE002A32B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A6F54B8212D8FBE002A32B1 /* CalendarAgendaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarAgendaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A6F54BC212D8FBE002A32B1 /* CalendarAgendaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAgendaTests.swift; sourceTree = "<group>"; };
 		0A6F54BE212D8FBE002A32B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A6F54C3212D8FBE002A32B1 /* CalendarAgendaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarAgendaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A6F54C7212D8FBE002A32B1 /* CalendarAgendaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAgendaUITests.swift; sourceTree = "<group>"; };
@@ -77,8 +81,14 @@
 		0ADD3EFC21368F7B00D16DC4 /* CAAgendaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaTableViewCell.swift; sourceTree = "<group>"; };
 		0ADD3EFE213936AA00D16DC4 /* CAAgendaViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaViewHeaderView.swift; sourceTree = "<group>"; };
 		0AFFC7F0213E571500886A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0AFFC7F5213EA2B100886A23 /* CAEventDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAEventDataManagerMock.swift; sourceTree = "<group>"; };
+		0AFFC7F7213EA4EF00886A23 /* CAAgendaInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaInteractorTest.swift; sourceTree = "<group>"; };
+		0AFFC7F9213EA58800886A23 /* CACalendarInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACalendarInteractorTest.swift; sourceTree = "<group>"; };
 		0AFFC7FB213F785200886A23 /* CAFloatingWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAFloatingWeatherView.swift; sourceTree = "<group>"; };
 		0AFFC7FD213F7DE400886A23 /* CAWeatherDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAWeatherDataFetcher.swift; sourceTree = "<group>"; };
+		0AFFC7FF213FDE5700886A23 /* CACalendarViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACalendarViewMock.swift; sourceTree = "<group>"; };
+		0AFFC801213FDF3400886A23 /* CAAgendaViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAAgendaViewMock.swift; sourceTree = "<group>"; };
+		0AFFC806213FEF7E00886A23 /* CAPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +181,10 @@
 		0A6F54BB212D8FBE002A32B1 /* CalendarAgendaTests */ = {
 			isa = PBXGroup;
 			children = (
-				0A6F54BC212D8FBE002A32B1 /* CalendarAgendaTests.swift */,
+				0AFFC7F4213EA27E00886A23 /* Mocks */,
+				0AFFC7F9213EA58800886A23 /* CACalendarInteractorTest.swift */,
+				0AFFC7F7213EA4EF00886A23 /* CAAgendaInteractorTest.swift */,
+				0AFFC806213FEF7E00886A23 /* CAPresenterTests.swift */,
 				0A6F54BE212D8FBE002A32B1 /* Info.plist */,
 			);
 			path = CalendarAgendaTests;
@@ -212,6 +225,16 @@
 				0AFFC7F0213E571500886A23 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0AFFC7F4213EA27E00886A23 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0AFFC7F5213EA2B100886A23 /* CAEventDataManagerMock.swift */,
+				0AFFC7FF213FDE5700886A23 /* CACalendarViewMock.swift */,
+				0AFFC801213FDF3400886A23 /* CAAgendaViewMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,7 +392,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A6F54BD212D8FBE002A32B1 /* CalendarAgendaTests.swift in Sources */,
+				0AFFC7F6213EA2B200886A23 /* CAEventDataManagerMock.swift in Sources */,
+				0AFFC802213FDF3400886A23 /* CAAgendaViewMock.swift in Sources */,
+				0AFFC800213FDE5700886A23 /* CACalendarViewMock.swift in Sources */,
+				0AFFC7FA213EA58800886A23 /* CACalendarInteractorTest.swift in Sources */,
+				0AFFC807213FEF7E00886A23 /* CAPresenterTests.swift in Sources */,
+				0AFFC7F8213EA4EF00886A23 /* CAAgendaInteractorTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
